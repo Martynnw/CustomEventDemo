@@ -20,19 +20,19 @@ namespace CustomEventDemo
 
         private async void ShowPage1_Clicked(object sender, EventArgs e)
         {
-            MetricsManager.TrackEvent("Page 1");
+            MetricsManager.TrackEvent("Show Page - Page 1");
             await this.Navigation.PushAsync(new Page1());
         }
 
         private async void ShowPage2_Clicked(object sender, EventArgs e)
         {
-            MetricsManager.TrackEvent("Page 2");
+            MetricsManager.TrackEvent("Show Page - Page 2");
             await this.Navigation.PushAsync(new Page2());
         }
 
         private async void ShowPage3_Clicked(object sender, EventArgs e)
         {
-            MetricsManager.TrackEvent("Page 3");
+            MetricsManager.TrackEvent("Show Page - Page 3");
             await this.Navigation.PushAsync(new Page3());
         }
 
