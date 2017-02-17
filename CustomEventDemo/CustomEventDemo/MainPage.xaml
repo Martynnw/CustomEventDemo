@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CustomEventDemo.MainPage">
     <StackLayout>
-        <Button Text="Fast Event" Clicked="FastButton_Clicked" />
-        <Button Text="Slower Event" Clicked="SlowerButton_Clicked" />
-        <Button Text="Slowest Event" Clicked="SlowestButton_Clicked" />
+        <Button Text="Show Page 1" Clicked="ShowPage1_Clicked" />
+        <Button Text="Show Page 2" Clicked="ShowPage2_Clicked" />
+        <Button Text="Show Page 3" Clicked="ShowPage3_Clicked" />
+        <Button Text="Duration Event" Clicked="DurationEvent_Clicked" />
+        <ActivityIndicator IsRunning="False" x:Name="Indicator" />
     </StackLayout>
 </ContentPage>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HockeyApp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,30 +11,38 @@ namespace CustomEventDemo
 {
     public partial class MainPage : ContentPage
     {
+        private Random random = new Random();
+
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private async void FastButton_Clicked(object sender, EventArgs e)
+        private async void ShowPage1_Clicked(object sender, EventArgs e)
         {
-            await TrackEvent(100);
+            MetricsManager.TrackEvent("Page 1");
+            await this.Navigation.PushAsync(new Page1());
         }
 
-        private async void SlowerButton_Clicked(object sender, EventArgs e)
+        private async void ShowPage2_Clicked(object sender, EventArgs e)
         {
-            await TrackEvent(300);
+            MetricsManager.TrackEvent("Page 2");
+            await this.Navigation.PushAsync(new Page2());
         }
 
-        private async void SlowestButton_Clicked(object sender, EventArgs e)
+        private async void ShowPage3_Clicked(object sender, EventArgs e)
         {
-            await TrackEvent(500);
+            MetricsManager.TrackEvent("Page 3");
+            await this.Navigation.PushAsync(new Page3());
         }
 
-        private async Task TrackEvent(int delay)
+        private async void DurationEvent_Clicked(object sender, EventArgs e)
         {
-            await Task.Delay(delay);
-            HockeyApp.MetricsManager.TrackEvent("ButtonClick", new Dictionary<string, string> { { "property", "value" } }, new Dictionary<string, double> { { "delay", delay } });
+            int duration = this.random.Next(3000);
+            this.Indicator.IsRunning = true;
+            await Task.Delay(duration);
+            this.Indicator.IsRunning = false;
+            MetricsManager.TrackEvent("DurationEvent", new Dictionary<string, string> { { "property", "value" } }, new Dictionary<string, double> { { "duration", duration} });
         }
     }
 }
